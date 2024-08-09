@@ -1,0 +1,57 @@
+
+<h1>Commandes Soumises</h1>
+<section id="section-commandes">
+{{#unless commandes.[0]}}
+    <h2 class="no-commandes">
+        Il n'y a pas de commandes soumises
+    </h2>
+{{else}}
+
+<ul id="commandeList">
+    <li class="commande">
+    <div class="commande-info commande-header">
+            <div >Numero Commande</div>
+            <div >Date Commande </div>
+            <!-- display input combobox state -->
+            <div >État Actuel: </div>
+            <div>
+                Etat
+            </div>
+            <div>
+                Action
+            </div>
+        </div>
+    </li>
+    {{#each commandes}}
+    <li class="commande">
+        <div class="commande-info">
+            <div class="commande-id">Commande #{{this.id_commande}}</div>
+            <div class="commande-date">{{this.date}}</div>
+            <!-- display input combobox state -->
+            <div class="commande-state">{{this.etat_commande.nom}}</div>
+            <div>
+                <select name="etat-command-{{this.id_commande}}" id="etat-command-{{this.id_commande}}">
+                    {{#each ../etatsCommande}}
+                    <option value="{{this.id_etat_commande}}" 
+                    {{#if (ifeq this.id_etat_commande ../this.etat_commande.id_etat_commande)}}selected="selected"{{/if}} >
+                    {{this.nom}}
+                    </option>
+
+                    {{/each}}
+                </select>
+            </div>
+            <div>
+                <button class="btn-modifier-etat" data-id-commande="{{this.id_commande}}" >
+                    Modifier</button>
+            </div>
+        </div>
+
+    </li>
+    {{/each}}
+</ul>
+
+
+{{/unless}}
+
+</section>
+<script src="/js/commandes.js"></script>

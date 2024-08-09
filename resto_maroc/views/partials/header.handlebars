@@ -1,0 +1,18 @@
+<header>
+    <nav>
+        <ul>
+            
+            {{#each navigation}}
+            {{#if isAccessible}}
+            <li class="nav-elemt {{#if (ifeq (lookup ../pageActuel 'route') this.route)}}active-page{{/if}}"><a href="{{this.route}}">{{this.title}}</a></li>    
+            {{/if}}
+            {{/each}}
+            {{#if isAuthentificated}}
+            <li>
+                <form method="post" action="/api/deconnexion">
+                    <input type="submit" value="Deconnexion" />
+                </form>
+            </li>
+            {{/if}}
+        </ul>
+</header>

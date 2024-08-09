@@ -1,0 +1,20 @@
+<h1>Menu du Restaurant</h1>
+
+<ul id="menuItems">
+    {{#each produits}}
+    <li class="entrees"> 
+        <img src="{{this.chemin_image}}" alt="{{this.nom}}">
+        <span class="name">{{this.nom}}</span>
+        <span>${{this.prix}}</span>
+        <div class="cart-controls">
+            <button class="btn-increment" data-id-produit={{this.id_produit}}>+</button>
+            <span id="span-quantite-{{this.id_produit}}" class="quantity">{{this.quantite}}</span>
+            <button class="btn-decrement" data-id-produit={{this.id_produit}}>-</button>
+        </div>
+        <button id="btn-add-panier-{{this.id_produit}}" class="btn-produit-ajouter" data-is-in-panier={{this.isInPanier}} data-id-produit={{this.id_produit}} data-produit-quantite={{this.quantite}}>
+            {{#if this.isInPanier}}Modifier Panier{{else}}Ajouter au Panier{{/if}}
+            </button>
+    </li>
+    {{/each}}
+</ul>
+<script src="./js/menu.js"></script>

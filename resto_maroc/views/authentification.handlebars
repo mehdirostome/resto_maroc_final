@@ -1,0 +1,20 @@
+<h1>{{title}}</h1>
+<div>
+    <form id="formulaire" novalidate>
+        <!-- Afficher l'email -->
+        <label for="inputEmail">Courriel</label>
+        <input type="email" id="inputEmail" required>
+
+        <!-- Afficher le mot de passe -->
+        <label for="input-mot-de-passe">Mot de passe</label>
+        <input type="password" id="input-mot-de-passe" required minlength="8" >
+
+        <!-- Message d'erreur -->
+        <div class="message-erreur" id="message-erreur" hidden>
+        </div>
+        
+        <input type="submit" value="{{buttonName}}">
+    </form>
+</div>
+
+<script type="module" src="{{js_script}}"></script>

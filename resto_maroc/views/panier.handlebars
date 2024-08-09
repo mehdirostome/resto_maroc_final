@@ -1,0 +1,39 @@
+<h1>Panier</h1>
+
+{{#unless produits.[0]}}
+    <h2 class="no-produits">Il n'y a pas de produits dans le panier</h2>
+{{/unless}}
+<div>
+<ul id="menuItems">
+    {{#each produits}}
+    <li class="entrees"> 
+        <img src="{{this.chemin_image}}" alt="{{this.nom}}">
+        <span class="name">{{this.nom}}</span>
+        <span>${{this.prix}}</span>
+        <div class="cart-controls">
+            <button class="btn-increment" data-id-produit={{this.id_produit}}>+</button>
+            <span id="span-quantite-{{this.id_produit}}" class="quantity">{{this.quantite}}</span>
+            <button class="btn-decrement" data-id-produit={{this.id_produit}}>-</button>
+        </div>
+        <button id="btn-add-panier-{{this.id_produit}}" class="btn-produit-modifier"  data-id-produit={{this.id_produit}} data-produit-quantite={{this.quantite}}>
+            Modifier Panier
+        </button>
+        <button id="btn-delete-panier-{{this.id_produit}}" class="btn-produit-supprimer"  data-id-produit={{this.id_produit}} >
+            Supprimer
+        </button>
+
+    </li>
+    {{/each}}
+</ul>
+<div class="summary-panier">
+    <div class="total-panier">
+        <span>Total: </span>
+        <span id="span-total-panier">${{totalPanier}}</span>
+    </div>
+    <div class="control-panier">
+    <button id="btn-vider-panier" {{#unless produits.[0]}} disabled {{/unless}}>Vider Panier</button>
+    <button id="btn-soumettre-panier" {{#unless produits.[0]}} disabled {{/unless}}> Soumettre</button>
+    </div>
+</div>
+</div>
+<script src="./js/panier.js"></script>
